@@ -1,0 +1,19 @@
+.nstSlider{
+   width: 90%;
+   color: grey;
+   background-colour: grey;
+}
+
+#hide {display: none; }
+#hide2 {display: none; }
+
+#container {
+  width: 600px;
+  height:500px;
+  border: 1px solid red;
+  
+  
+  margin: 0px auto;
+  text-align: center;
+}
+

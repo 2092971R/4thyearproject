@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+{% block body_block %}
+  <link type="text/css" rel="stylesheet" href="{% static 'div/slider/dist/jquery.nstSlider.css'%}"></link>
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+  <link type="text/css" rel="stylesheet" href="{% static 'threeperson.css' %}"></link>
+
+<img id='garden' src = "{%static "images/garden.jpg" %}" alt = "garden" width = 90% style="display: none;"/>
+<div>
+    <canvas id="firstCanvas" width="400" height="200" style="position: absolute; left: 100px; top: 0; z-index: 1;">Your browser does not support the HTML5 canvas tag.</canvas>
+    <canvas id="secondCanvas" width="400" height="200" style="position: absolute; left: 100px; top: 0; z-index: 2;">Your browser does not support the HTML5 canvas tag.</canvas>
+	<canvas id="thirdCanvas" width="400" height="200" style="position: absolute; left: 100px; top: 0; z-index: 3;">Your browser does not support the HTML5 canvas tag.</canvas>
+</div>
+<div>
+    <canvas id="shellCanvas" width="600" height="200">Your browser does not support the HTML5 canvas tag.</canvas>
+</div>
+  
+User 1, select where you would like to cut the cake
+
+<body onload="killme()" >
+	<section id="slider1">
+		<div class="nstSlider" data-range_min="0" data-range_max="100" 
+							   data-cur_min="20"    data-cur_max="80">
+
+			<div class="bar"></div>
+			<div class="leftGrip"></div>
+			<div class="rightGrip"></div>
+		</div>
+	</section>
+
+	<button onclick="cut()">Submit</button>
+	<p id="split"></p>
+	  <div id="hide">
+	  User 2, click the biggest slice and then the second biggest slice
+		<div class="row">
+			<div class="col-sm-4" style="background-color:white;">
+			  <canvas onclick="pick(1)"id="myCanvas" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+			</div>
+			<div class="col-sm-4" style="background-color:white;">
+			  <canvas onclick="pick(2)" id="myCanvas2" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+			</div>
+			<div class="col-sm-4" style="background-color:white;">
+			  <canvas onclick="pick(3)" id="myCanvas3" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+			</div>
+		</div>
+		<div id="hide2">
+			User 2 please select the region you would like to trim off the biggest slice to make it equal to the second biggest
+			<div class="row">
+				<div class="col-sm-6" style="background-color:white;">
+				  <canvas id="choosingCanvas" width="400" height="200" style="position: absolute; left: 0px; top: 0; z-index: 1;">Your browser does not support the HTML5 canvas tag.</canvas>
+                  <canvas id="coverCanvas" width="400" height="200" style="position: absolute; left: 0px; top: 0; z-index: 2;">Your browser does not support the HTML5 canvas tag.</canvas>
+				</div>
+				<div class="col-sm-6" style="background-color:white;">
+				  <canvas id="compareCanvas" width="400" height="200" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+				</div>
+			</div>
+			<div>
+				<section id="slider2">
+					<div class="nstSlider" data-range_min="0" data-range_max="100" data-cur_min="10"     data-cur_max="0">
+						<div class="bar"></div>
+						<div class="leftGrip"></div>
+					</div>
+				</section>
+				<button onclick="cut2()">Submit</button>
+			</div>
+			<div id="hide3">
+				User 3 Pick a slice 
+				<div class="row">
+					<div class="col-sm-4" style="background-color:white;">
+					  <canvas onclick="secondpick(1)"id="3choice" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+					</div>
+					<div class="col-sm-4" style="background-color:white;">
+					  <canvas onclick="secondpick(2)" id="3choice2" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+					</div>
+					<div class="col-sm-4" style="background-color:white;">
+					  <canvas onclick="secondpick(3)" id="3choice3" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+					</div>
+				</div>
+			    <div id="hide4">
+					<div class="col-sm-6" style="background-color:white;">
+					  <canvas onclick="secondpick(1)"id="3choice" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+					</div>
+					<div class="col-sm-6" style="background-color:white;">
+					  <canvas onclick="secondpick(2)" id="3choice2" width="300" height="150" style="border:1px solid #ffffff;">Your browser does not support the HTML5 canvas tag.</canvas>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	  </div>
+</body>  
+  
+  <!-- Include JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{% static 'div/slider/dist/jquery.nstSlider.min.js' %}"></script>
+<script src="{% static 'threeperson.js' %}"></script>
+
+{% endblock %}
